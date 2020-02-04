@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  app:
+    image: rust:1.40-alpine
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:${PWD}
+      - cargo-data:/usr/local/cargo
+      - rustup-data:/usr/local/rustup
+    working_dir: ${PWD}
+
+volumes:
+  cargo-data:
+  rustup-data:
