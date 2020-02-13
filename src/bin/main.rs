@@ -5,13 +5,16 @@ use std::net::TcpStream;
 use std::thread;
 use std::time::Duration;
 
+use rs_server::ThreadPool;
+
 fn main() {
     let listener = TcpListener::bind("0.0.0.0:8080").unwrap();
+    let pool = ThreadPool::new(4);
 
     for stream in listener.incoming() {
         let stream = stream.unwrap();
 
-        thread::spawn(|| {
+        pool.execute(|| {
             handle_connection(stream);
         });
     }

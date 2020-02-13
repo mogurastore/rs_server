@@ -1,5 +1,5 @@
 [package]
-name = "workspace"
+name = "rs_server"
 version = "0.1.0"
 authors = ["lisp719"]
 edition = "2018"
